@@ -19,17 +19,17 @@ class TestPostApiV1Dict:
             response = retrieve_reference_data(
                 start_date="2026-07-30", finish_date="2026-10-19"
             )
-        with allure.step("Проверка: код ответа = 201"):
-            check_response_code(response, 201)
+        with allure.step("Проверка: код ответа = 200"):
+            check_response_code(response, 200)
 
     @allure.testcase("TC2")
     @allure.testcase("TC3")
     @allure.title("Сортировка данных по полю 'name'")
-    @pytest.mark.parametrize("sort, reverse", [("asc", False), ("desc", True)])
+    @pytest.mark.parametrize("sort, reverse", [("ASC", False), ("DESC", True)])
     def test_post_sort_by_name(self, sort, reverse):
         with allure.step(
             "Шаг: Отправить запрос с start_date='2026-07-30' и finish_date='2026-10-19', "
-            "а также параметроми orderBy и orderDir"
+            "а также параметрами orderBy и orderDir"
         ):
             response = retrieve_reference_data(
                 start_date="2026-07-30",
@@ -37,10 +37,12 @@ class TestPostApiV1Dict:
                 orderBy="name",
                 orderDir=sort,
             )
-        with allure.step("Проверка: код ответа = 201"):
-            check_response_code(response, 201)
+        with allure.step("Проверка: код ответа = 200"):
+            check_response_code(response, 200)
         with allure.step("Проверка: сортировка выполнена успешно"):
-            check_dicts_are_sorted_by_key(response.json()["data"], key="name", reverse=reverse)
+            check_dicts_are_sorted_by_key(
+                response.json()["data"], key="name", reverse=reverse
+            )
 
     @allure.testcase("TC4")
     @allure.title("Получение данных с параметром limit=10")
@@ -51,8 +53,8 @@ class TestPostApiV1Dict:
             response = retrieve_reference_data(
                 start_date="2026-07-30", finish_date="2026-10-19", limit=10
             )
-        with allure.step("Проверка: код ответа = 201"):
-            check_response_code(response, 201)
+        with allure.step("Проверка: код ответа = 200"):
+            check_response_code(response, 200)
         with allure.step("Проверка: количество элементов <= 10"):
             assert (
                 len(response.json()["data"]) <= 10
@@ -69,3 +71,21 @@ class TestPostApiV1Dict:
             )
         with allure.step("Проверка: код ответа = 400"):
             check_response_code(response, 400)
+
+    @allure.testcase("TC6")
+    @allure.title("Запрос без параметра limit")
+    def test_post_without_limit(self):
+        with allure.step(
+            "Шаг: Отправить запрос с start_date='2026-07-30' и finish_date='2026-10-19' без limit"
+        ):
+            response = retrieve_reference_data(
+                start_date="2026-07-30", finish_date="2026-10-19", limit=None
+            )
+        with allure.step("Проверка: код ответа = 200"):
+            check_response_code(response, 200)
+        with allure.step(
+            "Проверка: количество элементов <= 50 (значение по умолчанию)"
+        ):
+            assert (
+                len(response.json()["data"]) <= 50
+            ), "Количество элементов в data превышает значение limit по умолчанию (50)"

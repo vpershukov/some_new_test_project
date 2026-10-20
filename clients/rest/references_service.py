@@ -5,7 +5,9 @@ from storage.urls import ReferenceUrls
 def retrieve_reference_data(start_date, finish_date, limit=50, **kwargs):
     """Функция отправляет запрос данных справочника за указанный период"""
     request_body = {"start_date": start_date, "finish_date": finish_date}
-    query_params = {"limit": limit, **kwargs}
+    query_params = {**kwargs}
+    if limit is not None:
+        query_params["limit"] = limit
 
     return send_request(
         method="POST",
