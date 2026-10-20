@@ -1,5 +1,3 @@
-# some_new_test_project
-
 Автотесты REST API справочного сервиса. Проверяется эндпоинт `POST /api/v1/dict` — получение данных справочника за период.
 
 Стек: Python, pytest, requests, Allure.
