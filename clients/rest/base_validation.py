@@ -14,14 +14,6 @@ def check_response_code(response, expected_code):
     )
 
 
-def check_value_in_dicts(items, key, value, comment="Assert-комментарий"):
-    """
-    Проверяет, что значение по ключу в каждом словаре совпадает с выбранным условием
-    """
-    for item in items:
-        assert item[key] == value, comment
-
-
 def check_dicts_are_sorted_by_key(
     items: list, key: str, reverse=False, comment="Assert-комментарий"
 ):
