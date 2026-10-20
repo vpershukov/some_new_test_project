@@ -62,7 +62,7 @@ class TestPostApiV1Dict:
     @allure.title("Получение данных с невалидным start_date")
     def test_post_with_invalid_start_date(self):
         with allure.step(
-            "Шаг: Отправить запрос с невалидным start_date='2026-07-30' и валидным finish_date='2026-10-19'"
+            "Шаг: Отправить запрос с невалидным start_date='15-07-2026' и валидным finish_date='2026-07-31'"
         ):
             response = retrieve_reference_data(
                 start_date="15-07-2026", finish_date="2026-07-31"
