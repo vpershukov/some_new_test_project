@@ -1,5 +1,3 @@
-# some_new_test_project
-
 Автотесты REST API справочного сервиса. Проверяется эндпоинт `POST /api/v1/dict` — получение данных справочника за период.
 
 Стек: Python, pytest, requests, Allure.
@@ -27,6 +25,12 @@ pip install -r requirements.txt
 ```
 
 Для отчётов Allure нужен [Allure Commandline](https://allurereport.org/docs/install/).
+
+Форматирование кода:
+
+```bash
+black .
+```
 
 ## Запуск
 
