@@ -1,4 +1,5 @@
-pytest
-requests
-allure-pytest
-curlify
+pytest==8.2.2
+requests==2.32.3
+allure-pytest==2.16.0
+curlify==3.0.0
+black==26.10.1

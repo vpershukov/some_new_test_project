@@ -11,5 +11,5 @@ def retrieve_reference_data(start_date, finish_date, limit=50, **kwargs):
         method="POST",
         resource_url=ReferenceUrls.DICT_URL,
         json=request_body,
-        params=query_params
+        params=query_params,
     )
