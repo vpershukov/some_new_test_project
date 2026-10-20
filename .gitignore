@@ -1,5 +1,6 @@
 # Allure results (reporting)
 **/allure-results/
+**/allure-report/
 
 # Python cache
 **/__pycache__/
@@ -10,6 +11,7 @@
 # ENV files
 .env
 /venv/
+.venv/
 
 # IDE files
 .idea/
