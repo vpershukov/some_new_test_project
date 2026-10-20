@@ -11,14 +11,13 @@ def send_request(method, resource_url, **kwargs):
     - Возвращает объект http-response
     """
     response = requests.request(
-        method, resource_url, verify=False, timeout=120, **kwargs
+        method, resource_url, verify=False, timeout=15, **kwargs
     )
-    if not isinstance(response.request.body, bytes):
-        allure.attach(
-            curlify.to_curl(response.request),
-            "REQUEST",
-            allure.attachment_type.TEXT,
-        ),
+    allure.attach(
+        curlify.to_curl(response.request),
+        "REQUEST",
+        allure.attachment_type.TEXT,
+    )
     allure.attach(
         str(response.status_code), "RESPONSE CODE", allure.attachment_type.TEXT
     )
