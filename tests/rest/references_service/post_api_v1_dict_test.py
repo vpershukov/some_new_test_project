@@ -40,7 +40,7 @@ class TestPostApiV1Dict:
         with allure.step("Проверка: код ответа = 201"):
             check_response_code(response, 201)
         with allure.step("Проверка: сортировка выполнена успешно"):
-            check_dicts_are_sorted_by_key(response.json(), key="name", reverse=reverse)
+            check_dicts_are_sorted_by_key(response.json()["data"], key="name", reverse=reverse)
 
     @allure.testcase("TC4")
     @allure.title("Получение данных с параметром limit=10")
