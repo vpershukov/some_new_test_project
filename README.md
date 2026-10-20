@@ -11,7 +11,7 @@ clients/rest/          HTTP-клиент, валидации, методы се�
   references_service.py  метод retrieve_reference_data
 storage/urls.py        базовый URL и пути эндпоинтов
 tests/rest/            тест-кейсы
-pytest.ini             маркеры pytest
+pytest.ini             pythonpath и маркеры pytest
 requirements.txt       зависимости Python
 ```
 
